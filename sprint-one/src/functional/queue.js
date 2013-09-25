@@ -8,11 +8,18 @@ var makeQueue = function(){
   // Implement the methods below
 
   instance.enqueue = function(value){
+    storage[size + front] = value;
     size++;
   };
 
   instance.dequeue = function(){
-    size && size--;
+    var fval = storage[front];
+    delete storage[front];
+    if(size){
+      front++;
+      size--;
+    }
+    return fval;
   };
 
   instance.size = function(){
