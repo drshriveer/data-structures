@@ -11,6 +11,15 @@ describe("tree", function() {
     expect('value' in tree).toBe(true);
   });
 
+  it("should 'addChild' with value and child's value should exist". function(){
+    tree.addChild('a');
+    tree.addChild('b');
+
+    expect(tree.children[0]).toEqual('a');
+    expect(tree.children[0]).toEqual('b');
+    
+  });
+
   it("should check if a value is 'contained' in a tree or is subsequent children"), function(){
     tree.addChild('a');
     tree.addChild('b');
@@ -27,6 +36,8 @@ describe("tree", function() {
     expect(tree.contains('bar')).toBe(false);
 
   }
+
+
 
   // Add more tests here to test the functionality of tree.
 });
