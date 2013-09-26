@@ -15,15 +15,15 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(value){
-  var results = [];
+  var results = false;
 
   if(this.value === value){
-    results.push(true);
+    results = true;
+  }else{
+    _(this.children).each(function(childNode){
+      results = (results || childNode.contains(value));
+    });
   }
-  _(this.children).each(function(childNode){
-    results = results.concat(childNode.contains(value),results);
-  });
 
-  return _.some(results);
-
+  return results;
 };
