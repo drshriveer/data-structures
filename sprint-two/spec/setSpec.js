@@ -33,4 +33,25 @@ describe("set", function() {
     expect(set.contains('e').toBe(true));
     expect(set.contains('s').toBe(false));
   });
+
+  it("should remove specific element from set", function() {
+    set.add('a');
+    set.add('b');
+    set.add('c');
+    set.add('d');
+    set.add('e');
+    set.remove('a');
+    set.remove('b');
+    set.remove('c');
+    expect(set.contains('a').toBe(false));
+    expect(set.contains('b').toBe(false));
+    expect(set.contains('c').toBe(false));
+    expect(set.contains('d').toBe(true));
+    expect(set.contains('e').toBe(true));
+    expect(set.contains('e').toBe(true));
+    expect(set.contains('s').toBe(false));
+
+  });
+
+
 });
