@@ -11,16 +11,19 @@ describe("tree", function() {
     expect('value' in tree).toBe(true);
   });
 
+  it("should have property 'children' which is an Array", function(){
+    expect(Array.isArray(tree.children)).toBe(true);
+  });
+
   it("should 'addChild' with value and child's value should exist". function(){
     tree.addChild('a');
     tree.addChild('b');
 
     expect(tree.children[0]).toEqual('a');
     expect(tree.children[0]).toEqual('b');
-    
   });
 
-  it("should check if a value is 'contained' in a tree or is subsequent children"), function(){
+  it("should check if a value is 'contained' in a tree or is subsequent children", function(){
     tree.addChild('a');
     tree.addChild('b');
     tree.children[0].addChild('c');
@@ -34,8 +37,7 @@ describe("tree", function() {
     expect(tree.contains('e')).toBe(true);
     expect(tree.contains('foo')).toBe(false);
     expect(tree.contains('bar')).toBe(false);
-
-  }
+  });
 
 
 
