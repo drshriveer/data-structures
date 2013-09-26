@@ -3,7 +3,7 @@ var makeTree = function(value){
   newTree.value = value;
   newTree.children = []; //has property length
 
-  _.extend(newTree, treeMethods);
+  _(newTree).extend(treeMethods);
 
   return newTree;
 };

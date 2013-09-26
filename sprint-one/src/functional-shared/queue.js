@@ -5,7 +5,7 @@ var makeQueue = function(){
   instance.mySize = 0;
   instance.front = 0;
 
-  _.extend(instance,queueMethods);
+  _(instance).extend(queueMethods);
 
   return instance;
 };
