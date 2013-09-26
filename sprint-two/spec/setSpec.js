@@ -23,4 +23,14 @@ describe("set", function() {
     expect(set._storage['d'].toEqual('d'));
   });
 
+  it("after add should contain", function() {
+    set.add('a');
+    set.add('b');
+    set.add('c');
+    set.add('d');
+    set.add('e');
+    expect(set.contains('a').toBe(true));
+    expect(set.contains('e').toBe(true));
+    expect(set.contains('s').toBe(false));
+  });
 });
