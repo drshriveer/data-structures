@@ -19,8 +19,8 @@ describe("tree", function() {
     tree.addChild('a');
     tree.addChild('b');
 
-    expect(tree.children[0]).toEqual('a');
-    expect(tree.children[0]).toEqual('b');
+    expect(tree.children[0].value).toEqual('a');
+    expect(tree.children[1].value).toEqual('b');
   });
 
   it("should check if a value is 'contained' in a tree or is subsequent children", function(){
