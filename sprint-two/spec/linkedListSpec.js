@@ -16,5 +16,32 @@ describe("linkedList", function() {
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
 
+  it("should add to tail"), function(){
+    //expect(linkedList.addToTail('a'));
+  }
+
+  it("should contain node in 'head' "), function(){
+    linkedList.addToTail('a');
+    var node = makeNode('a');
+    expect(linkedList.head).toEqual(node);
+  }
+
+  it("should remove head and return value"), function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    expect(linkedList.removeHead()).toEqual('a');
+    expect(linkedList.removeHead()).toEqual('b');
+  }
+
+  it("should test if list contains value"), function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    expect(linkedList.contains('a')).toBe(true);
+    expect(linkedList.contains('c')).toBe(true);
+    expect(linkedList.contains('e')).toBe(false);
+  }
+
   // add more tests here to test the functionality of linkedList
 });
