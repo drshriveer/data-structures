@@ -17,21 +17,21 @@ describe("set", function() {
     set.add('c');
     set.add('d');
     set.add('e');
-    expect(set._storage['a'].toEqual('a'));
-    expect(set._storage['b'].toEqual('b'));
-    expect(set._storage['c'].toEqual('c'));
-    expect(set._storage['d'].toEqual('d'));
+    expect(set._storage['a']).toEqual('a');
+    expect(set._storage['b']).toEqual('b');
+    expect(set._storage['c']).toEqual('c');
+    expect(set._storage['d']).toEqual('d');
   });
 
-  it("after add should contain", function() {
+  it("should have a working 'contains' method", function() {
     set.add('a');
     set.add('b');
     set.add('c');
     set.add('d');
     set.add('e');
-    expect(set.contains('a').toBe(true));
-    expect(set.contains('e').toBe(true));
-    expect(set.contains('s').toBe(false));
+    expect(set.contains('a')).toBe(true);
+    expect(set.contains('e')).toBe(true);
+    expect(set.contains('s')).toBe(false);
   });
 
   it("should remove specific element from set", function() {
@@ -43,13 +43,13 @@ describe("set", function() {
     set.remove('a');
     set.remove('b');
     set.remove('c');
-    expect(set.contains('a').toBe(false));
-    expect(set.contains('b').toBe(false));
-    expect(set.contains('c').toBe(false));
-    expect(set.contains('d').toBe(true));
-    expect(set.contains('e').toBe(true));
-    expect(set.contains('e').toBe(true));
-    expect(set.contains('s').toBe(false));
+    expect(set.contains('a')).toBe(false);
+    expect(set.contains('b')).toBe(false);
+    expect(set.contains('c')).toBe(false);
+    expect(set.contains('d')).toBe(true);
+    expect(set.contains('e')).toBe(true);
+    expect(set.contains('e')).toBe(true);
+    expect(set.contains('s')).toBe(false);
 
   });
 
