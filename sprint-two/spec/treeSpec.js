@@ -15,7 +15,7 @@ describe("tree", function() {
     expect(Array.isArray(tree.children)).toBe(true);
   });
 
-  it("should 'addChild' with value and child's value should exist". function(){
+  it("should 'addChild' with value and child's value should exist", function(){
     tree.addChild('a');
     tree.addChild('b');
 
