@@ -34,5 +34,19 @@ describe("hashTable", function() {
     expect(hashTable.retrieve('key2')).toEqual('value2');    
   });
 
+  it("should remove a particular item given its key", function(){
+    hashTable.set('key1', 'value1');
+    hashTable.set('key2', 'value2');
+
+    expect(hashTable.retrieve('key1')).toEqual('value1');
+    hashTable.remove('key1');
+    expect(hashTable.retrieve('key1')).toBe(undefined);
+
+    expect(hashTable.retrieve('key2')).toEqual('value2');
+    hashTable.remove('key2');
+    expect(hashTable.retrieve('key2')).toBe(undefined);
+    
+  });
+
   // add more tests!
 });
