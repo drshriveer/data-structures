@@ -2,7 +2,7 @@ describe("tree", function() {
   var tree;
 
   beforeEach(function() {
-    tree = makeTree();
+    tree = makeTree('initial');
   });
 
   it("should have methods named 'addChild' and 'contains', and a property named 'value'", function() {
@@ -10,6 +10,23 @@ describe("tree", function() {
     expect(tree.contains).toEqual(jasmine.any(Function));
     expect('value' in tree).toBe(true);
   });
+
+  it("should check if a value is 'contained' in a tree or is subsequent children"), function(){
+    tree.addChild('a');
+    tree.addChild('b');
+    tree.children[0].addChild('c');
+    tree.children[0].addChild('d');
+    tree.children[1].addChild('e');
+
+    expect(tree.contains('a')).toBe(true);
+    expect(tree.contains('b')).toBe(true);
+    expect(tree.contains('c')).toBe(true);
+    expect(tree.contains('d')).toBe(true);
+    expect(tree.contains('e')).toBe(true);
+    expect(tree.contains('foo')).toBe(false);
+    expect(tree.contains('bar')).toBe(false);
+
+  }
 
   // Add more tests here to test the functionality of tree.
 });
