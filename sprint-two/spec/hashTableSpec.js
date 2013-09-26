@@ -20,5 +20,19 @@ describe("hashTable", function() {
     expect(hashTable.retrieve(v2)).toEqual(v2);
   });
 
+  it("should be able to insert items into table", function() {
+    hashTable.set('key1', 'value1');
+    var key1 = getIndexBelowMaxForKey('key1');
+    expect(hashTable._storage[key1]).toEqual('value1');
+  });
+
+  it("should retrieve a particular item given its key", function(){
+    hashTable.set('key1', 'value1');
+    hashTable.set('key2', 'value2');
+
+    expect(hashTable.retrieve('key1')).toEqual('value1');    
+    expect(hashTable.retrieve('key2')).toEqual('value2');    
+  });
+
   // add more tests!
 });
