@@ -44,19 +44,16 @@ describe("linkedList", function() {
     expect(linkedList.contains('e')).toBe(false);
   });
   // add more tests here to test the functionality of linkedList
-    it("should accept 'addToHead' to add value to top of list", function(){
-    var aNode = makeNode('a');
-    var bNode = makeNode('b');
-    var cNode = makeNode('c');
+    it("should accept 'addToHead' to add value to head", function(){
 
     linkedList.addToTail('a');
-    expect(linkedList.head).toEqual(aNode);
+    expect(linkedList.head.value).toEqual('a');
 
     linkedList.addToTail('b');
-    expect(linkedList.head).toEqual(aNode);
+    expect(linkedList.head.value).toEqual('a');
 
     likedList.addToHead('c');
-    expect(linkedList.head).toEqual(cNode);
+    expect(linkedList.head.value).toEqual('c');
   });
 
 });
