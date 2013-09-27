@@ -43,6 +43,13 @@ describe("linkedList", function() {
     expect(linkedList.removeHead()).toEqual('b');
   });
 
+  it("should remove tail and return value", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    expect(linkedList.removeTail()).toEqual('b');
+    expect(linkedList.removeTail()).toEqual('a');
+  });
+
   it("should test if list contains value", function(){
     linkedList.addToTail('a');
     linkedList.addToTail('b');
