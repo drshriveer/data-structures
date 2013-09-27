@@ -46,12 +46,12 @@ describe("tree", function() {
     tree.children[0].addChild('d');
     tree.children[1].addChild('e');
 
-    expect(tree.parent).toEqual('null');
-    expect(tree.children[0].parent).toEqual(tree);
-    expect(tree.children[1].parent).toEqual(tree);
-    expect(tree.children[0].child[0].parent).toEqual(tree.children[0]);
-    expect(tree.children[0].child[1].parent).toEqual(tree.children[1]);
-    expect(tree.children[1].child[1].parent).toEqual(tree.children[1]);
+    expect(tree.parent).toBe(null);
+    expect(tree.children[0].parent.value).toEqual('initial');
+    expect(tree.children[1].parent.value).toEqual('initial');
+    expect(tree.children[0].child[0].parent.value).toEqual('a');
+    expect(tree.children[0].child[1].parent.value).toEqual('a');
+    expect(tree.children[1].child[0].parent.value).toEqual('b');
 
   });
 
