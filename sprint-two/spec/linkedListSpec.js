@@ -17,14 +17,14 @@ describe("linkedList", function() {
   });
 
   // it("should add to tail"), function(){
-    
   //   //expect(linkedList.addToTail('a'));
   // }
 
-  it("should contain node in 'head' ", function(){
+  it("should add nodes and 'head' should be maintained ", function(){
     linkedList.addToTail('a');
-    var node = makeNode('a');
-    expect(linkedList.head).toEqual(node);
+    expect(linkedList.head.value).toEqual('a');
+    linkedList.addToTail('b');
+    expect(linkedList.head.value).toEqual('a');
   });
 
   it("should remove head and return value", function(){
