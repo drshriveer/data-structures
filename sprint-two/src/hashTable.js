@@ -9,18 +9,20 @@ var HashTable = function(){
   //
   // There's also a '.each' method that you might find
   // handy once you're working on resizing
+  //
+  // 
+  //
   this._storage = makeLimitedArray(this._limit);
 };
 
 HashTable.prototype.insert = function(k, v){
 
   var i = getIndexBelowMaxForKey(k, this._limit);
-  var somethingInStorage = !!this._storage.get(i) || this._storage.get(i) === [];
-  var keyAlreadyExists = _.reduce(this._storage.get(i), function(memo, keyPair){
-    return memo || (keyPair[0] === k);
-  },false);
+  var keyAlreadyExists = _.some(this._storage.get(i), function(keyPair){
+    return keyPair[0] === k;
+  });
 
-  if( ! somethingInStorage ){
+  if( ! !!this._storage.get(i) ){
      this._storage.set(i, [[k,v]]);
   }
   else if (! keyAlreadyExists ){
