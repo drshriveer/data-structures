@@ -65,7 +65,7 @@ describe("tree", function() {
     expect(tree.children[1].value).toEqual('b');
 
     tree.children[1].removeFromParent();
-    expect(tree.children[1]).toBe(null);
+    expect(tree.children[1]).toBe(undefined);
 
     tree.children[0].children[0].removeFromParent();
     expect(tree.children[0].children[0].value).toEqual('d');
