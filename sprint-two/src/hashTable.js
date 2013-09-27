@@ -47,11 +47,10 @@ HashTable.prototype.retrieve = function(k){
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
   var temp = this._storage.get(i);
-  if(this._storage.get(i) != undefined){
-    for (var j = 0; j < temp.length; j++) {
-      if(temp[j] !== undefined && this._storage.get(i)[j][0] === k){
-  //       delete this._storage.get(i)[j];
-      }
+
+  for (var j = 0; j < temp.length; j++) {
+    if(temp[j][0] === k){
+      this._storage.set(i, temp.slice(0,j).concat(temp.slice(j+1,temp.length)));
     }
   }
 
