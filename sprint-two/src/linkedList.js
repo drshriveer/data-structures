@@ -35,7 +35,7 @@ var makeLinkedList = function(){
   list.contains = function(value){
     var currentNode = list.head;
     var found = false;
-    while(currentNode.next || !found ){
+    while(currentNode.next && !found ){
       found = (value === currentNode.value);
       currentNode = currentNode.next;
     }
