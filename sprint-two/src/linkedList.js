@@ -8,9 +8,11 @@ var makeLinkedList = function(){
     var node = makeNode(value);
     if (list.head === null) {
       list.head = node;
+      list.tail = node;
+    }else{
+      node.next = list.tail;
+      list.tail = node;
     }
-    list.tail.next = node;
-    list.tail = node;
   };
 
   list.addToHead = function(value){
