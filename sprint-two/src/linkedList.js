@@ -31,7 +31,13 @@ var makeLinkedList = function(){
     list.head = list.head.next;
     return value;
   };
-
+  ///////
+  list.removeTail = function(){
+    var value = list.tail.value;
+    list.tail = list.head.prev;
+    return value;
+  };
+///////
   list.contains = function(value){
     var currentNode = list.head;
     while(currentNode.next){
@@ -47,7 +53,8 @@ var makeLinkedList = function(){
 var makeNode = function(value){
   var node = {};
   node.value = value;
-  node.next = null && next;  
+  node.next = null && next;
+  node.prev = null && prev;
   return node;
 };
 //
