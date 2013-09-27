@@ -13,6 +13,15 @@ var makeLinkedList = function(){
     list.tail = node;
   };
 
+  list.addToHead = function(value){
+    var node = makeNode(value);
+    if (list.tail === null) {
+      list.tail = node;
+    }
+    list.head.next = node;
+    list.head = node;
+  };
+
   list.removeHead = function(){
     var value = list.head.value;
     list.head = list.head.next;
