@@ -10,7 +10,7 @@ var makeLinkedList = function(){
       list.head = node;
       list.tail = node;
     }else{
-      node.next = list.tail;
+      list.tail.next = node;
       list.tail = node;
     }
   };
@@ -21,7 +21,7 @@ var makeLinkedList = function(){
       list.tail = node;
       list.head = node;
     }else{
-      list.head.next = node;
+      node.next = list.head;
       list.head = node;
     }
   };
