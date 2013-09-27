@@ -17,11 +17,13 @@ var makeLinkedList = function(){
 
   list.addToHead = function(value){
     var node = makeNode(value);
-    if (list.tail === null) {
+    if (list.head === null) {
       list.tail = node;
+      list.head = node;
+    }else{
+      list.head.next = node;
+      list.head = node;
     }
-    list.head.next = node;
-    list.head = node;
   };
 
   list.removeHead = function(){
