@@ -27,6 +27,15 @@ describe("linkedList", function() {
     expect(linkedList.head.value).toEqual('a');
   });
 
+    it("should take value in 'addToHead' and add to head", function(){
+    linkedList.addToTail('a');
+    expect(linkedList.head.value).toEqual('a');
+    linkedList.addToTail('b');
+    expect(linkedList.head.value).toEqual('a');
+    linkedList.addToHead('c');
+    expect(linkedList.head.value).toEqual('c');
+  });
+
   it("should remove head and return value", function(){
     linkedList.addToTail('a');
     linkedList.addToTail('b');
@@ -44,16 +53,5 @@ describe("linkedList", function() {
     expect(linkedList.contains('e')).toBe(false);
   });
   // add more tests here to test the functionality of linkedList
-    it("should accept 'addToHead' to add value to head", function(){
-
-    linkedList.addToTail('a');
-    expect(linkedList.head.value).toEqual('a');
-
-    linkedList.addToTail('b');
-    expect(linkedList.head.value).toEqual('a');
-
-    likedList.addToHead('c');
-    expect(linkedList.head.value).toEqual('c');
-  });
 
 });
