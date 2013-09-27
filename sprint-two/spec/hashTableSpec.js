@@ -20,23 +20,29 @@ describe("hashTable", function() {
     expect(hashTable.retrieve(v2)).toEqual(v2);
   });
 
-  it("should be able to insert items into table", function() {
-    hashTable.set('key1', 'value1');
-    var key1 = getIndexBelowMaxForKey('key1');
-    expect(hashTable._storage[key1]).toEqual('value1');
+  it("should be able to insert items into table ** check spec if fails", function() {
+
+    // !!
+    // This test is a hack that accesses internal (private) info
+    // it MUST be changed if the way the insert is coded is changed
+    // !!
+
+    hashTable.insert('key1', 'value1');
+    var key1 = getIndexBelowMaxForKey('key1',8);
+    expect(hashTable._storage.get(key1)[0][1]).toEqual('value1');
   });
 
   it("should retrieve a particular item given its key", function(){
-    hashTable.set('key1', 'value1');
-    hashTable.set('key2', 'value2');
+    hashTable.insert('key1', 'value1');
+    hashTable.insert('key2', 'value2');
 
-    expect(hashTable.retrieve('key1')).toEqual('value1');    
-    expect(hashTable.retrieve('key2')).toEqual('value2');    
+    expect(hashTable.retrieve('key1')).toEqual('value1');
+    expect(hashTable.retrieve('key2')).toEqual('value2');
   });
 
   it("should remove a particular item given its key", function(){
-    hashTable.set('key1', 'value1');
-    hashTable.set('key2', 'value2');
+    hashTable.insert('key1', 'value1');
+    hashTable.insert('key2', 'value2');
 
     expect(hashTable.retrieve('key1')).toEqual('value1');
     hashTable.remove('key1');
@@ -45,7 +51,7 @@ describe("hashTable", function() {
     expect(hashTable.retrieve('key2')).toEqual('value2');
     hashTable.remove('key2');
     expect(hashTable.retrieve('key2')).toBe(undefined);
-    
+
   });
 
   // add more tests!
