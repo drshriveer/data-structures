@@ -56,8 +56,8 @@ var makeLinkedList = function(){
 var makeNode = function(value){
   var node = {};
   node.value = value;
-  node.next = null && next;
-  node.prev = null && prev;
+  node.next = node.next || null;
+  node.prev = node.prev || null;
   return node;
 };
 //
