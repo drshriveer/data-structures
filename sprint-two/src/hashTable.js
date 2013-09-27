@@ -15,14 +15,15 @@ var HashTable = function(){
 HashTable.prototype.insert = function(k, v){
 
   var i = getIndexBelowMaxForKey(k, this._limit);
-  var alreadyExists = _.reduce(this._storage.get(i), function(memo, keyPair){
+  var somethingInStorage = !!this._storage.get(i) || this._storage.get(i) === [];
+  var keyAlreadyExists = _.reduce(this._storage.get(i), function(memo, keyPair){
     return memo || (keyPair[0] === k);
   },false);
 
-  if(!!this._storage.get(i) || this._storage.get(i) === []){
+  if( ! somethingInStorage ){
      this._storage.set(i, [[k,v]]);
   }
-  else if (!alreadyExists ){
+  else if (! keyAlreadyExists ){
     var store =  this._storage.get(i);
     store.push([k,v]);
     this._storage.set(i, store);
@@ -32,18 +33,28 @@ HashTable.prototype.insert = function(k, v){
 };
 
 HashTable.prototype.retrieve = function(k){
+
   var i = getIndexBelowMaxForKey(k, this._limit);
-  for (var j = 0; j < this._storage(i).length; j++) {
+  for (var j = 0; j < this._storage.get(i).length; j++) {
     if( this._storage.get(i)[j][0] === k){
       return this._storage.get(i)[j][1];
     }
   }
+
   return;
 };
 
 HashTable.prototype.remove = function(k){
-   var i = getIndexBelowMaxForKey(k, this._limit);
-   delete this._storage.get(i)[k];
+  var i = getIndexBelowMaxForKey(k, this._limit);
+  var temp = this._storage.get(i);
+  if(this._storage.get(i) != undefined){
+    for (var j = 0; j < temp.length; j++) {
+      if(temp[j] !== undefined && this._storage.get(i)[j][0] === k){
+  //       delete this._storage.get(i)[j];
+      }
+    }
+  }
+
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js
