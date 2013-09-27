@@ -34,12 +34,11 @@ var makeLinkedList = function(){
 
   list.contains = function(value){
     var currentNode = list.head;
-    var found = false;
-    while(currentNode.next && !found ){
-      found = (value === currentNode.value);
+    while(currentNode.next){
+      if(value === currentNode.value){ return true; }
       currentNode = currentNode.next;
     }
-    return found;
+    return false;
   };
 
   return list;
