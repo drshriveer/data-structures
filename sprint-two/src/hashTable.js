@@ -34,16 +34,25 @@ HashTable.prototype.insert = function(k, v){
   console.log(i);
   this._size ++;
 
+  this._expandTest();
+};
+
+HashTable.prototype._expandTest = function(){
   if(this._size > (0.75) * this._limit){
-    console.log("75% capacity reached");
-    this._double();
+    console.log("more than 75% capacity");
+    var temp = this._backup(2);
+    this._limit *= 2;
+    this._storage = temp._storage;
   }
 };
 
-HashTable.prototype._double = function(){
-  var temp = this._backup(2);
-  this._limit *= 2;
-  this._storage = temp._storage;
+HashTable.prototype._shrinkTest = function(){
+  if(this._size < (0.25) * this._limit){
+    console.log("less than 25% capacity");
+    var temp = this._backup(0.5);
+    this._limit *= 0.5;
+    this._storage = temp._storage;
+  }
 };
 
 HashTable.prototype._backup = function(factor){
@@ -59,14 +68,8 @@ HashTable.prototype._backup = function(factor){
   return newHashTable;
 };
 
-HashTable.prototype._shrink = function(){
-
-};
-
-
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  
   for (var j = 0; j < this._storage.get(i).length; j++) {
     if( this._storage.get(i)[j][0] === k){
       return this._storage.get(i)[j][1];
@@ -84,6 +87,8 @@ HashTable.prototype.remove = function(k){
       this._storage.set(i, temp.slice(0,j).concat(temp.slice(j+1,temp.length)));
     }
   }
+
+  this._shrinkTest();
 
 };
 
