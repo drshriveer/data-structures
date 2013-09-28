@@ -11,7 +11,7 @@ describe("set", function() {
     expect(set.remove).toEqual(jasmine.any(Function));
   });
 
-    it("after add should add specific elemets", function() {
+    it("after add should add string elemets", function() {
     set.add('a');
     set.add('b');
     set.add('c');
@@ -51,6 +51,18 @@ describe("set", function() {
     expect(set.contains('e')).toBe(true);
     expect(set.contains('s')).toBe(false);
 
+  });
+
+    it("should add number elemets", function() {
+    set.add(1);
+    set.add(2);
+    set.add(3);
+    set.add(4);
+    set.add(5);
+    expect(set._storage['1']).toEqual(1);
+    expect(set._storage['2']).toEqual(2);
+    expect(set._storage['3']).toEqual(3);
+    expect(set._storage['4']).toEqual(4);
   });
 
 

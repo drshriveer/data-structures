@@ -23,10 +23,9 @@ HashTable.prototype.insert = function(k, v){
     return keyPair[0] === k;
   });
 
-  if( ! !!this._storage.get(i) ){
+  if( ! this._storage.get(i) ){
      this._storage.set(i, [[k,v]]);
-  }
-  else if (! keyAlreadyExists ){
+  }else if (! keyAlreadyExists ){
     var store =  this._storage.get(i);
     store.push([k,v]);
     this._storage.set(i, store);

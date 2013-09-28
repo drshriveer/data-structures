@@ -71,6 +71,24 @@ describe("tree", function() {
     expect(tree.children[0].children[0].value).toEqual('d');
   });
 
+  it("should have a traverse method which accepts a call back ", function(){
+    tree.addChild('z');
+    tree.addChild('b');
+    tree.children[0].addChild('d');
+    tree.children[0].addChild('f');
+    tree.children[1].addChild('m');
+
+    tree.traverse(function(node){
+      node.value += 'oo'
+    })
+
+    expect(tree.children[0].value).toEqual('zoo')
+    expect(tree.children[1].value).toEqual('boo');
+    expect(tree.children[0].children[0].value).toEqual('doo');
+    expect(tree.children[0].children[1].value).toEqual('foo');
+    expect(tree.children[1].children[0].value).toEqual('moo');
+  });
+
 
   // Add more tests here to test the functionality of tree.
 });
