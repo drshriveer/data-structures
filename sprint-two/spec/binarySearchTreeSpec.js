@@ -38,5 +38,20 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.contains(11)).toBe(false);
   });
 
+  it("should correctly exicute callback on every element of the tree", function(){
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(10);
+
+    binarySearchTree.depthFirstLog(function(node){
+      node.value = node.value*2;
+    });
+
+    expect(binarySearchTree.value).toEqual(6);
+    expect(binarySearchTree.left.value).toEqual(2);
+    expect(binarySearchTree.right.value).toEqual(12);
+    expect(binarySearchTree.right.right.value).toEqual(20);
+  });
+
 
 });
