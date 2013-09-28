@@ -52,13 +52,32 @@ bTreePrototype.contains = function(val){
 bTreePrototype.depthFirstLog = function(callBack){
   callBack(this);
 
-  if(this.right){
-    this.right.depthFirstLog(callBack);
-  }
   if(this.left){
     this.left.depthFirstLog(callBack);
   }
+  if(this.right){
+    this.right.depthFirstLog(callBack);
+  }
+
 };
 
+bTreePrototype.breadthFirstLog = function(callBack){
+  callBack(this);
 
+  var traverse = function(child){
+    if (child.right){
+      callBack(child.right);
+    }
+    if(child.left){
+      callBack(child.left);
+    }
+    if(child.right){
+      traverse(child.right);
+    }
+    if(child.left){
+      traverse(child.left);
+    }
+  };
+  traverse(this);
+};
 
