@@ -10,23 +10,43 @@ var makeBinarySearchTree = function(value){
 
 var bTreePrototype = {};
 
-bTreePrototype.insert = function(value){
+bTreePrototype.insert = function(val){
 
-  if(value < this.value && this.left === null){
-    this.left = makeBinarySearchTree(value);
-  }else if(value < this.value && this.left !== null){
-    this.left.insert(value);
-  }else if( value > this.value && this.right === null){
-    this.right = makeBinarySearchTree(value);
-  }else if( value > this.value && this.right !== null){
-    this.left.insert(value);
+  if(val < this.value){
+    if(this.left === null) {
+      this.left = makeBinarySearchTree(val);
+    }else{
+      this.left.insert(val);
+    }
+  }else if( val > this.value){
+    if (this.right === null) {
+      this.right = makeBinarySearchTree(val);
+    } else {
+      this.right.insert(val);
+    }
   }else{
     //same value do nothing bitch!
   }
 
 };
 
-bTreePrototype.contains = function(){
+bTreePrototype.contains = function(val){
+  if (val === this.value){
+    return true;
+  } else if(val < this.value){
+    if(!this.left){
+      return false;
+    } else {
+      return this.left.contains(val);
+    }
+  } else if (val > this.value){
+    if(!this.right){
+      return false;
+    } else {
+    return this.right.contains(val);
+    }
+  }
+
 };
 
 bTreePrototype.depthFirstLog = function(){  
