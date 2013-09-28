@@ -54,5 +54,20 @@ describe("hashTable", function() {
 
   });
 
+
+  it("should double in size when 75% capacity is obtained", function(){
+    hashTable.insert('key1', 'value1');
+    hashTable.insert('key2', 'value2');
+    hashTable.insert('key2', 'value2');
+    
+    expect(hashTable._limit).toEqual('8');
+
+    hashTable.insert('key3', 'value2');
+    hashTable.insert('key4', 'value2');
+    hashTable.insert('key5', 'value2');
+    hashTable.insert('key6', 'value2');
+
+    expect(hashTable._limit).toEqual('16');
+  });
   // add more tests!
 });
