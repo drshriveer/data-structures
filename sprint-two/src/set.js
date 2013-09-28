@@ -11,7 +11,7 @@ setPrototype.add = function(string){
 };
 
 setPrototype.contains = function(string){
-  return !!(this._storage[string]) || false;
+  return !!(this._storage[string]);
 };
 
 setPrototype.remove = function(string){
