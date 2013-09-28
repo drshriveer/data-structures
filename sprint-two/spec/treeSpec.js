@@ -86,7 +86,7 @@ describe("tree", function() {
     expect(tree.children[1].value).toEqual('boo');
     expect(tree.children[0].children[0].value).toEqual('doo');
     expect(tree.children[0].children[1].value).toEqual('foo');
-    expect(tree.children[1].children[1].value).toEqual('foo');
+    expect(tree.children[1].children[0].value).toEqual('moo');
   });
 
 
