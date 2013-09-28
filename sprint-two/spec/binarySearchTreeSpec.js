@@ -58,8 +58,9 @@ describe("binarySearchTree", function() {
     binarySearchTree.insert(1);
     binarySearchTree.insert(6);
     binarySearchTree.insert(10);
+
     binarySearchTree.breadthFirstLog(function(node){
-      node.value = node.value*2;
+      node.value *=2;
     });
 
     expect(binarySearchTree.value).toEqual(6);

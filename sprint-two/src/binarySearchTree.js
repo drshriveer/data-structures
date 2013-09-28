@@ -62,22 +62,18 @@ bTreePrototype.depthFirstLog = function(callBack){
 };
 
 bTreePrototype.breadthFirstLog = function(callBack){
-  callBack(this);
+  var q = new Queue();
+  q.enqueue(this);
 
-  var traverse = function(child){
-    if (child.right){
-      callBack(child.right);
+  while(q.size() > 0){
+    var node = q.dequeue();
+    callBack(node);
+    if(node.left){
+      q.enqueue(node.left);
     }
-    if(child.left){
-      callBack(child.left);
+    if(node.right){
+      q.enqueue(node.right);
     }
-    if(child.right){
-      traverse(child.right);
-    }
-    if(child.left){
-      traverse(child.left);
-    }
-  };
-  traverse(this);
+  }
 };
 
