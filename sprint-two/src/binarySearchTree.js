@@ -49,7 +49,15 @@ bTreePrototype.contains = function(val){
 
 };
 
-bTreePrototype.depthFirstLog = function(){  
+bTreePrototype.depthFirstLog = function(callBack){
+  callBack(this);
+
+  if(this.right){
+    this.right.depthFirstLog(callBack);
+  }
+  if(this.left){
+    this.left.depthFirstLog(callBack);
+  }
 };
 
 
