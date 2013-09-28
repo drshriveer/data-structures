@@ -32,23 +32,31 @@ HashTable.prototype.insert = function(k, v){
     this._storage.set(i, store);
   }
   console.log(i);
-  size ++;
-  if(size > (0.75)*_limit)
-  {
+  this._size ++;
+
+  if(this._size > (0.75) * this._limit){
     console.log("75% capacity reached");
-    this.extend();
+    this._double();
   }
 };
 
 HashTable.prototype._double = function(){
-var newHashTable = new HashTable(_limit*2);
+  var temp = this._backup(2);
+  this._limit *= 2;
+  this._storage = temp._storage;
+};
 
-  this._storage.each(function(val){
-    for (var i = 0; i < val.length; i++) {
-      newHashTable.insert(val[i][0],val[i][1]);
+HashTable.prototype._backup = function(factor){
+  var newHashTable = new HashTable(this._limit*factor);
+
+  this._storage.each(function(val,index,collection){
+    if(val !== undefined){
+      for (var i = 0; i < val.length; i++) {
+        newHashTable.insert(val[i][0],val[i][1]);
+      }
     }
   });
-  this = newHashTable;
+  return newHashTable;
 };
 
 HashTable.prototype._shrink = function(){

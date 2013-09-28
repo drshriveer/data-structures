@@ -59,15 +59,21 @@ describe("hashTable", function() {
     hashTable.insert('key1', 'value1');
     hashTable.insert('key2', 'value2');
     hashTable.insert('key2', 'value2');
-    
-    expect(hashTable._limit).toEqual('8');
 
-    hashTable.insert('key3', 'value2');
-    hashTable.insert('key4', 'value2');
-    hashTable.insert('key5', 'value2');
-    hashTable.insert('key6', 'value2');
+    var key1 = getIndexBelowMaxForKey('key2',8);
+    expect(hashTable._storage.get(key1)[0][1]).toEqual('value2');
 
-    expect(hashTable._limit).toEqual('16');
+    expect(hashTable._limit).toEqual(8);
+
+    hashTable.insert('key3', 'value3');
+    hashTable.insert('key4', 'value4');
+    hashTable.insert('key5', 'value5');
+    hashTable.insert('key6', 'value6');
+
+    key1 = getIndexBelowMaxForKey('key2',16);
+    expect(hashTable._storage.get(key1)[0][1]).toEqual('value2');
+
+    expect(hashTable._limit).toEqual(16);
   });
   // add more tests!
 });
