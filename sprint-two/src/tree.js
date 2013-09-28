@@ -37,3 +37,7 @@ treeMethods.removeFromParent = function(){
 
   this.parent = null;
 };
+
+treeMethods.traverse = function(callback){
+
+};
