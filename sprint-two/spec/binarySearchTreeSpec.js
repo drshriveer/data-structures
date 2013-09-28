@@ -27,6 +27,17 @@ describe("binarySearchTree", function() {
   });
 
   it("should use .contains to find inserted items", function(){
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(10);
+
+    expect(binarySearchTree.contains(3)).toBe(true);
+    expect(binarySearchTree.contains(1)).toBe(true);
+    expect(binarySearchTree.contains(6)).toBe(true);
+    expect(binarySearchTree.contains(10)).toBe(true);
+    expect(binarySearchTree.contains(11)).toBe(false);
+
 
   });
 
